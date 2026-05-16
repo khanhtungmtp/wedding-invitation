@@ -1,6 +1,6 @@
 /** Demo audio — replace with your hosted MP3 if desired */
 export const MUSIC_URL =
-  'https://raw.githubusercontent.com/khanhtungmtp/womenday-2026/refs/heads/master/src/assets/thefateofophelia.mp3'
+  'https://github.com/khanhtungmtp/wedding-invitation/raw/refs/heads/master/src/assets/thefateofophelia.mp3'
 
 export const COUPLE = {
   bride: 'Minh Anh',
