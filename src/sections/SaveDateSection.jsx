@@ -10,11 +10,11 @@ export function SaveDateSection() {
   return (
     <section
       id="wedding-date"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-blush-100 to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
+      className="section-pad overflow-hidden bg-gradient-to-b from-white via-blush-100 to-blush-100"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-72 max-w-xl rounded-full bg-blush-200/55 blur-3xl" />
+      <div className="glow-orb bg-blush-200/55" aria-hidden />
 
-      <div className="relative mx-auto max-w-xl">
+      <div className="section-inner">
         <Reveal>
           <SectionTitle
             eyebrow="Wedding date"
@@ -24,22 +24,22 @@ export function SaveDateSection() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <GlassCard className="px-7 py-10 sm:px-10">
-            <div className="flex flex-col gap-8">
+          <GlassCard className="px-5 py-8 sm:px-7 sm:py-10">
+            <div className="flex flex-col gap-6 sm:gap-8">
               <div className="text-center">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-blush-muted sm:tracking-[0.34em]">
                   Trân trọng kính mời
                 </p>
-                <p className="mt-5 font-script text-[clamp(3rem,11vw,4.75rem)] leading-none text-blush-ink">
+                <p className="mt-4 break-words font-script text-[clamp(2.25rem,10vw,4.25rem)] leading-none text-blush-ink sm:mt-5">
                   {COUPLE.bride}
-                  <span className="mx-3 inline-block translate-y-[-6px] text-blush-400">
+                  <span className="mx-2 inline-block translate-y-[-4px] text-blush-400 sm:mx-3">
                     &
                   </span>
                   {COUPLE.groom}
                 </p>
               </div>
 
-              <div className="mx-auto grid w-full max-w-sm grid-cols-3 gap-3">
+              <div className="mx-auto grid w-full min-w-0 max-w-sm grid-cols-3 gap-2 sm:gap-3">
                 {[
                   { label: 'Ngày', value: dayjs(WEDDING_DATE_ISO).format('DD') },
                   { label: 'Tháng', value: dayjs(WEDDING_DATE_ISO).format('MM') },
@@ -47,12 +47,12 @@ export function SaveDateSection() {
                 ].map((cell) => (
                   <div
                     key={cell.label}
-                    className="rounded-3xl border border-white/70 bg-white/70 px-3 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
+                    className="min-w-0 rounded-2xl border border-white/70 bg-white/70 px-2 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] sm:rounded-3xl sm:px-3 sm:py-4"
                   >
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-blush-muted">
+                    <div className="text-[9px] font-semibold uppercase tracking-[0.2em] text-blush-muted sm:text-[11px] sm:tracking-[0.28em]">
                       {cell.label}
                     </div>
-                    <div className="mt-2 font-script text-4xl text-blush-ink">
+                    <div className="mt-1.5 font-script text-3xl text-blush-ink sm:mt-2 sm:text-4xl">
                       {cell.value}
                     </div>
                   </div>
@@ -60,10 +60,12 @@ export function SaveDateSection() {
               </div>
 
               <div className="text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-blush-muted">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-blush-muted sm:text-xs sm:tracking-[0.34em]">
                   Mark your calendar
                 </p>
-                <p className="mt-3 text-lg font-semibold text-blush-ink">{dateLine}</p>
+                <p className="mt-2 text-base font-semibold text-blush-ink sm:mt-3 sm:text-lg">
+                  {dateLine}
+                </p>
               </div>
             </div>
           </GlassCard>

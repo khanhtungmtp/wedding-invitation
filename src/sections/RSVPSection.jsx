@@ -93,16 +93,13 @@ export function RSVPSection() {
   }
 
   const fieldCls =
-    'mt-2 w-full rounded-3xl border border-white/75 bg-white/70 px-4 py-3 text-[15px] text-blush-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none ring-0 transition focus:border-blush-400/70 focus:shadow-[0_0_0_4px_rgba(217,184,196,0.25)]'
+    'mt-2 w-full min-w-0 max-w-full rounded-3xl border border-white/75 bg-white/70 px-4 py-3 text-[15px] text-blush-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none ring-0 transition focus:border-blush-400/70 focus:shadow-[0_0_0_4px_rgba(217,184,196,0.25)]'
 
   return (
-    <section
-      id="rsvp"
-      className="relative bg-white px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-28 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
+    <section id="rsvp" className="section-pad overflow-hidden bg-white">
+      <div className="glow-orb bg-blush-200/45" aria-hidden />
 
-      <div className="relative mx-auto max-w-xl">
+      <div className="section-inner">
         <Reveal>
           <SectionTitle
             eyebrow="RSVP"
@@ -112,8 +109,8 @@ export function RSVPSection() {
         </Reveal>
 
         <Reveal delay={0.06}>
-          <GlassCard hover={false} className="px-7 py-9">
-            <form className="space-y-6" onSubmit={onSubmit} noValidate>
+          <GlassCard hover={false} className="px-5 py-7 sm:px-7 sm:py-9">
+            <form className="min-w-0 space-y-5 sm:space-y-6" onSubmit={onSubmit} noValidate>
               <div>
                 <label className="text-xs font-semibold text-blush-muted" htmlFor="fullName">
                   Họ và tên
@@ -153,7 +150,7 @@ export function RSVPSection() {
 
               <div>
                 <p className="text-xs font-semibold text-blush-muted">Trạng thái</p>
-                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3 sm:gap-3">
                   {[
                     { id: 'yes', label: 'Sẽ tham dự' },
                     { id: 'maybe', label: 'Chưa chắc' },
@@ -165,7 +162,7 @@ export function RSVPSection() {
                         key={opt.id}
                         type="button"
                         onClick={() => setField('attending', opt.id)}
-                        className={`rounded-3xl border px-4 py-3 text-sm font-semibold shadow-sm transition ${
+                        className={`w-full max-w-full rounded-3xl border px-3 py-3 text-sm font-semibold shadow-sm transition sm:px-4 ${
                           active
                             ? 'border-blush-400/70 bg-blush-100 text-blush-ink'
                             : 'border-white/75 bg-white/65 text-blush-muted hover:border-blush-300/70'
@@ -194,7 +191,7 @@ export function RSVPSection() {
                   value={form.guestCount}
                   onChange={(e) => setField('guestCount', e.target.value)}
                 >
-                  {Array.from({ length: 2 }, (_, i) => i + 1).map((n) => (
+                  {Array.from({ length: 30 }, (_, i) => i + 1).map((n) => (
                     <option key={n} value={String(n)}>
                       {n} người
                     </option>
@@ -226,7 +223,7 @@ export function RSVPSection() {
               <motion.button
                 type="submit"
                 disabled={submitting}
-                className="relative w-full overflow-hidden rounded-3xl bg-blush-ink px-5 py-4 text-sm font-semibold text-white shadow-lift disabled:cursor-not-allowed disabled:opacity-55"
+                className="relative w-full max-w-full overflow-hidden rounded-3xl bg-blush-ink px-4 py-3.5 text-sm font-semibold text-white shadow-lift disabled:cursor-not-allowed disabled:opacity-55 sm:px-5 sm:py-4"
                 whileTap={{ scale: submitting ? 1 : 0.985 }}
               >
                 <span className={submitting ? 'opacity-45' : ''}>

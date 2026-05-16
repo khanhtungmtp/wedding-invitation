@@ -6,11 +6,19 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    max-width: 100%;
+    overscroll-behavior-x: none;
   }
 
   body {
     margin: 0;
     min-height: 100dvh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
     color: theme('colors.blush.muted');
     background-color: theme('colors.blush.100');
     font-family: theme('fontFamily.sans');
@@ -23,7 +31,9 @@
     color: theme('colors.blush.ink');
   }
 
-  img {
+  img,
+  video,
+  svg {
     max-width: 100%;
     height: auto;
     vertical-align: middle;
@@ -34,9 +44,27 @@
   textarea,
   select {
     font: inherit;
+    max-width: 100%;
   }
 
   #root {
     isolation: isolate;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .section-pad {
+    @apply relative w-full max-w-full overflow-x-hidden px-4 pb-20 pt-[clamp(3.25rem,14vw,7rem)] sm:px-6 sm:pb-24;
+  }
+
+  .section-inner {
+    @apply relative mx-auto w-full min-w-0 max-w-xl;
+  }
+
+  .glow-orb {
+    @apply pointer-events-none absolute left-1/2 top-24 h-72 w-full max-w-xl -translate-x-1/2 rounded-full blur-3xl;
   }
 }

@@ -7,11 +7,11 @@ import { WEDDING_DATE_ISO } from '../data/wedding'
 
 function Unit({ label, value }) {
   return (
-    <GlassCard hover={false} className="px-4 py-5 text-center">
-      <div className="font-script text-[clamp(2.6rem,10vw,3.8rem)] leading-none text-blush-ink">
+    <GlassCard hover={false} className="min-w-0 px-2 py-4 text-center sm:px-4 sm:py-5">
+      <div className="font-script text-[clamp(2rem,9vw,3.5rem)] leading-none text-blush-ink">
         {value}
       </div>
-      <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
+      <div className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-blush-muted sm:mt-2 sm:text-[11px] sm:tracking-[0.34em]">
         {label}
       </div>
     </GlassCard>
@@ -36,13 +36,10 @@ export function CountdownSection() {
       ]
 
   return (
-    <section
-      id="countdown"
-      className="relative bg-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
-    >
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[120%] -translate-x-1/2 rounded-full bg-blush-200/55 blur-3xl" />
+    <section id="countdown" className="section-pad overflow-hidden bg-blush-100">
+      <div className="glow-orb -top-16 bg-blush-200/55" aria-hidden />
 
-      <div className="relative mx-auto max-w-xl">
+      <div className="section-inner">
         <Reveal>
           <SectionTitle
             eyebrow="Countdown"
@@ -52,20 +49,19 @@ export function CountdownSection() {
         </Reveal>
 
         <motion.div
-          className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
+          className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-90px' }}
           variants={{
             hidden: {},
-            show: {
-              transition: { staggerChildren: 0.08 },
-            },
+            show: { transition: { staggerChildren: 0.08 } },
           }}
         >
           {units.map((u) => (
             <motion.div
               key={u.label}
+              className="min-w-0"
               variants={{
                 hidden: { opacity: 0, y: 18 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
@@ -78,7 +74,7 @@ export function CountdownSection() {
 
         {isPast ? (
           <motion.p
-            className="mt-8 text-center text-sm font-semibold text-blush-ink"
+            className="mt-6 px-2 text-center text-sm font-semibold text-blush-ink sm:mt-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

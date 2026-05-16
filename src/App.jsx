@@ -23,7 +23,7 @@ const ease = [0.22, 1, 0.36, 1]
 function InvitationContent() {
   return (
     <motion.main
-      className="bg-blush-100"
+      className="w-full max-w-full overflow-x-hidden bg-blush-100"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.9, ease }}
@@ -49,22 +49,24 @@ export default function App() {
 
   return (
     <MusicProvider>
-      <AnimatePresence mode="wait">
-        {!opened ? (
-          <EnvelopeInvitation key="envelope" onOpen={() => setOpened(true)} />
-        ) : (
-          <InvitationContent key="content" />
-        )}
-      </AnimatePresence>
+      <div className="w-full max-w-full overflow-x-hidden">
+        <AnimatePresence mode="wait">
+          {!opened ? (
+            <EnvelopeInvitation key="envelope" onOpen={() => setOpened(true)} />
+          ) : (
+            <InvitationContent key="content" />
+          )}
+        </AnimatePresence>
 
-      <MusicPlayer visible={opened} />
+        <MusicPlayer visible={opened} />
+      </div>
 
       <Toaster
         position="top-center"
         toastOptions={{
           duration: 2800,
           className:
-            '!rounded-3xl !border !border-white/70 !bg-white/85 !text-blush-ink !shadow-lift !backdrop-blur-xl',
+            '!rounded-3xl !border !border-white/70 !bg-white/85 !text-blush-ink !shadow-lift !backdrop-blur-xl !max-w-[calc(100vw-2rem)]',
         }}
       />
     </MusicProvider>

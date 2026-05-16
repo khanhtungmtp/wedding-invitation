@@ -13,7 +13,7 @@ export function MusicPlayer({ visible = true }) {
       type="button"
       onClick={() => void toggleMusic()}
       aria-label={playing ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền'}
-      className="fixed bottom-[calc(16px+env(safe-area-inset-bottom))] right-[calc(16px+env(safe-area-inset-right))] z-[60] grid h-14 w-14 place-items-center rounded-full border border-white/70 bg-white/70 text-blush-ink shadow-lift backdrop-blur-xl"
+      className="fixed bottom-[max(12px,env(safe-area-inset-bottom))] right-[max(12px,env(safe-area-inset-right))] z-[60] grid h-12 w-12 touch-manipulation place-items-center rounded-full border border-white/70 bg-white/70 text-blush-ink shadow-lift backdrop-blur-xl sm:h-14 sm:w-14"
       initial={{ opacity: 0, scale: 0.85, y: 12 }}
       animate={{
         opacity: 1,
@@ -54,7 +54,7 @@ export function MusicPlayer({ visible = true }) {
       </AnimatePresence>
 
       {!ready ? (
-        <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-blush-200 px-2 py-0.5 text-[10px] font-semibold text-blush-ink shadow-sm">
+        <span className="absolute -top-2 left-1/2 max-w-[4.5rem] -translate-x-1/2 truncate rounded-full bg-blush-200 px-2 py-0.5 text-[9px] font-semibold text-blush-ink shadow-sm sm:text-[10px]">
           Demo
         </span>
       ) : null}

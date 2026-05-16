@@ -124,7 +124,7 @@ Most copy + imagery lives in:
 Placeholder assets:
 
 - Hero/gallery photos are remote placeholder URLs (replace with your photos).
-- QR demo lives at `src/assets/qr-placeholder.svg`.
+- QR demo lives at `src/assets/qr.jpg`.
 - Demo audio URL lives in `src/data/wedding.js` (`MUSIC_URL`).
 
 ## Tech notes
@@ -141,3 +141,11 @@ Placeholder assets:
 | `npm run build` | Production bundle             |
 | `npm run preview` | Preview production build locally |
 | `npm run deploy` | Build + publish `dist/` to `gh-pages` |
+Sau này update web
+
+Chỉ cần:
+
+git add .
+git commit -m "update"
+git push
+npm run deploy

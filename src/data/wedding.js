@@ -69,9 +69,9 @@ export const WEDDING_EVENTS = [
 ]
 
 export const BANK_INFO = {
-  bankName: 'Vietcombank (demo)',
+  bankName: 'Vietcombank',
   accountName: 'HUU QUOC / MINH ANH',
-  accountNumber: '0123456789',
+  accountNumber: '1030034140',
 }
 
 export const IMAGES = {

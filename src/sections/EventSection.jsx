@@ -7,17 +7,19 @@ import { SectionTitle } from '../components/SectionTitle'
 import { MAPS_QUERY, VENUE, WEDDING_DATE_ISO, WEDDING_EVENTS } from '../data/wedding'
 
 export function EventSection() {
-  const mapsHref = `https://maps.app.goo.gl/73FWLy6ZgmhZL88i9`
+  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    MAPS_QUERY,
+  )}`
   const datePretty = dayjs(WEDDING_DATE_ISO).format('dddd, DD/MM/YYYY')
 
   return (
     <section
       id="event"
-      className="relative bg-gradient-to-b from-blush-100 via-white to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
+      className="section-pad overflow-hidden bg-gradient-to-b from-blush-100 via-white to-blush-100"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
+      <div className="glow-orb bg-blush-200/45" aria-hidden />
 
-      <div className="relative mx-auto max-w-xl">
+      <div className="section-inner">
         <Reveal>
           <SectionTitle
             eyebrow="Event"
@@ -26,21 +28,25 @@ export function EventSection() {
           />
         </Reveal>
 
-        <Reveal className="mb-8" delay={0.06}>
-          <GlassCard className="px-7 py-8">
-            <div className="flex items-start gap-3">
-              <span className="mt-1 grid h-11 w-11 place-items-center rounded-2xl bg-blush-100 text-blush-ink shadow-sm">
+        <Reveal className="mb-6 sm:mb-8" delay={0.06}>
+          <GlassCard className="px-5 py-7 sm:px-7 sm:py-8">
+            <div className="flex min-w-0 items-start gap-3">
+              <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-blush-100 text-blush-ink shadow-sm sm:h-11 sm:w-11">
                 <FiMapPin />
               </span>
-              <div className="min-w-0">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
+              <div className="min-w-0 flex-1">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-blush-muted sm:text-[11px] sm:tracking-[0.34em]">
                   Địa điểm
                 </p>
-                <p className="mt-3 text-lg font-semibold text-blush-ink">{VENUE.name}</p>
-                <p className="mt-2 text-[15px] leading-relaxed text-blush-muted">
+                <p className="mt-2 text-base font-semibold text-blush-ink sm:mt-3 sm:text-lg">
+                  {VENUE.name}
+                </p>
+                <p className="mt-2 break-words text-[14px] leading-relaxed text-blush-muted sm:text-[15px]">
                   {VENUE.address}
                 </p>
-                <p className="mt-4 text-sm font-semibold text-blush-ink">{datePretty}</p>
+                <p className="mt-3 break-words text-xs font-semibold text-blush-ink sm:mt-4 sm:text-sm">
+                  {datePretty}
+                </p>
               </div>
             </div>
 
@@ -48,39 +54,39 @@ export function EventSection() {
               href={mapsHref}
               target="_blank"
               rel="noreferrer"
-              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-3xl bg-blush-ink px-5 py-4 text-sm font-semibold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-black"
+              className="mt-6 inline-flex w-full max-w-full items-center justify-center gap-2 rounded-3xl bg-blush-ink px-4 py-3.5 text-sm font-semibold text-white shadow-lift transition active:scale-[0.99] sm:mt-7 sm:px-5 sm:py-4"
             >
               Mở Google Maps
-              <FiExternalLink />
+              <FiExternalLink className="shrink-0" />
             </a>
           </GlassCard>
         </Reveal>
 
-        <RevealStagger className="grid gap-4">
+        <RevealStagger className="grid gap-3 sm:gap-4">
           {WEDDING_EVENTS.map((b) => (
             <RevealItem key={b.key}>
-              <GlassCard className="px-7 py-7">
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
+              <GlassCard className="px-5 py-6 sm:px-7 sm:py-7">
+                <div className="flex min-w-0 flex-wrap items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-blush-muted sm:text-[11px] sm:tracking-[0.34em]">
                       {b.key === 'ceremony' ? 'Ceremony' : 'Reception'}
                     </p>
-                    <p className="mt-3 font-script text-[clamp(2.4rem,9vw,3.4rem)] leading-none text-blush-ink">
+                    <p className="mt-2 break-words font-script text-[clamp(2rem,8vw,3.2rem)] leading-none text-blush-ink sm:mt-3">
                       {b.title}
                     </p>
                   </div>
-                  <span className="rounded-full bg-blush-100 px-4 py-2 text-xs font-bold text-blush-ink shadow-sm">
+                  <span className="shrink-0 rounded-full bg-blush-100 px-3 py-1.5 text-[10px] font-bold text-blush-ink shadow-sm sm:px-4 sm:py-2 sm:text-xs">
                     {b.time}
                   </span>
                 </div>
 
-                <div className="mt-5 space-y-2">
+                <div className="mt-4 space-y-1.5 sm:mt-5 sm:space-y-2">
                   {b.lines.map((line) => (
-                    <p key={line} className="text-[15px] leading-relaxed text-blush-muted">
+                    <p key={line} className="text-[14px] leading-relaxed text-blush-muted sm:text-[15px]">
                       {line}
                     </p>
                   ))}
-                  <p className="text-sm font-semibold text-blush-ink">{b.detail}</p>
+                  <p className="break-words text-sm font-semibold text-blush-ink">{b.detail}</p>
                 </div>
               </GlassCard>
             </RevealItem>

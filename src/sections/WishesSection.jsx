@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { FiRefreshCw } from 'react-icons/fi'
 
 import { GlassCard } from '../components/GlassCard'
+import { Reveal } from '../components/Reveal'
 import { SectionTitle } from '../components/SectionTitle'
 import { DEMO_WISHES } from '../data/wedding'
 import { googleScriptUrl } from '../data/config'
@@ -43,13 +44,13 @@ export function WishesSection() {
   return (
     <section
       id="wishes"
-      className="relative bg-gradient-to-b from-blush-100 via-white to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
+      className="section-pad overflow-hidden bg-gradient-to-b from-blush-100 via-white to-blush-100"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-28 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
+      <div className="glow-orb bg-blush-200/45" aria-hidden />
 
-      <div className="relative mx-auto max-w-xl">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
+      <div className="section-inner">
+        <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+          <Reveal className="min-w-0 flex-1">
             <SectionTitle
               eyebrow="Wishes"
               title="Lời chúc ấm áp"
@@ -60,13 +61,13 @@ export function WishesSection() {
               }
               align="left"
             />
-          </div>
+          </Reveal>
 
           <motion.button
             type="button"
             onClick={() => void load()}
             disabled={loading}
-            className="inline-flex items-center justify-center gap-2 self-start rounded-full border border-white/75 bg-white/65 px-5 py-3 text-xs font-semibold uppercase tracking-[0.26em] text-blush-ink shadow-sm backdrop-blur-xl disabled:opacity-55"
+            className="inline-flex max-w-full shrink-0 touch-manipulation items-center justify-center gap-2 self-start rounded-full border border-white/75 bg-white/65 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-blush-ink shadow-sm backdrop-blur-xl disabled:opacity-55 sm:px-5 sm:py-3 sm:text-xs sm:tracking-[0.26em]"
             whileTap={{ scale: 0.985 }}
           >
             <FiRefreshCw className={loading ? 'animate-spin' : ''} />
@@ -74,25 +75,26 @@ export function WishesSection() {
           </motion.button>
         </div>
 
-        <div className="grid gap-4">
+        <div className="grid min-w-0 gap-3 sm:gap-4">
           {items.map((w, idx) => (
             <motion.div
               key={w.id || `${w.name}-${idx}`}
+              className="min-w-0"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-90px' }}
               transition={{ duration: 0.55, delay: (idx % 6) * 0.05 }}
             >
-              <GlassCard className="px-7 py-7">
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <p className="font-script text-[clamp(2.2rem,8vw,3rem)] leading-none text-blush-ink">
+              <GlassCard className="px-5 py-6 sm:px-7 sm:py-7">
+                <div className="flex min-w-0 flex-wrap items-start justify-between gap-3">
+                  <p className="min-w-0 break-words font-script text-[clamp(1.75rem,7vw,2.75rem)] leading-none text-blush-ink">
                     {w.name}
                   </p>
-                  <p className="rounded-full bg-blush-100 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-blush-muted">
+                  <p className="shrink-0 rounded-full bg-blush-100 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-blush-muted sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em]">
                     {w.createdAt ? dayjs(w.createdAt).format('DD/MM/YYYY') : '—'}
                   </p>
                 </div>
-                <p className="mt-5 whitespace-pre-wrap text-[15px] leading-relaxed text-blush-muted">
+                <p className="mt-4 break-words whitespace-pre-wrap text-[14px] leading-relaxed text-blush-muted sm:mt-5 sm:text-[15px]">
                   {w.message}
                 </p>
               </GlassCard>
