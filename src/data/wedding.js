@@ -1,6 +1,6 @@
 /** Demo audio — replace with your hosted MP3 if desired */
 export const MUSIC_URL =
-  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+  'https://raw.githubusercontent.com/khanhtungmtp/womenday-2026/refs/heads/master/src/assets/thefateofophelia.mp3'
 
 export const COUPLE = {
   bride: 'Minh Anh',
@@ -22,18 +22,67 @@ export const VENUE = {
 
 export const MAPS_QUERY = `${VENUE.name}, ${VENUE.address}`
 
+export const GROOM_FAMILY = {
+  title: 'Nhà trai',
+  parents: 'Ông Nguyễn Văn A — Bà Trần Thị B',
+  address: '123 Đường Hoa Lan, Quận 7, TP.HCM',
+  ceremonyTime: '09:30 — Lễ vu quy',
+  note: 'Trân trọng kính mời quý khách đến dự lễ tại tư gia nhà trai.',
+}
+
+export const BRIDE_FAMILY = {
+  title: 'Nhà gái',
+  parents: 'Ông Phạm Văn C — Bà Lê Thị D',
+  address: '456 Đường Mai Vàng, Quận 3, TP.HCM',
+  ceremonyTime: '10:00 — Đón dâu',
+  note: 'Trân trọng kính mời quý khách đến dự lễ tại tư gia nhà gái.',
+}
+
+export const INVITATION_CONTENT = {
+  greeting:
+    'Trân trọng kính mời Quý khách đến dự buổi tiệc chung vui cùng gia đình chúng tôi.',
+  body: `Với tất cả sự trân trọng, chúng tôi — ${COUPLE.groom} & ${COUPLE.bride} — xin gửi lời mời thân mật đến Quý khách, mong được đón tiếp trong ngày vui trọng đại của hai chúng tôi.`,
+  schedule: [
+    { label: 'Đón khách', time: '09:00' },
+    { label: 'Lễ thành hôn', time: '09:30 — 10:30' },
+    { label: 'Tiệc cưới', time: '11:00 — 14:00' },
+  ],
+  closing:
+    'Sự hiện diện của Quý khách là niềm vinh hạnh và món quà quý giá nhất đối với chúng tôi. Xin chân thành cảm ơn!',
+}
+
+export const WEDDING_EVENTS = [
+  {
+    key: 'ceremony',
+    title: 'Lễ thành hôn',
+    lines: ['Trang trọng — ấm áp — sum họp'],
+    detail: VENUE.name,
+    time: VENUE.ceremonyTime,
+  },
+  {
+    key: 'reception',
+    title: 'Tiệc cưới',
+    lines: ['Kính mời quý khách dự tiệc buffet'],
+    detail: VENUE.name,
+    time: VENUE.receptionTime,
+  },
+]
+
 export const BANK_INFO = {
   bankName: 'Vietcombank (demo)',
   accountName: 'HUU QUOC / MINH ANH',
   accountNumber: '0123456789',
 }
 
-/** Hero & gallery imagery — curated placeholder photography */
 export const IMAGES = {
-  hero:
-    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85',
-  heroFallback:
-    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85',
+  groom:
+    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85',
+  bride:
+    'https://images.unsplash.com/photo-1523438885200-e635ba54c084?auto=format&fit=crop&w=900&q=85',
+  groomFallback:
+    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=85',
+  brideFallback:
+    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=900&q=85',
   gallery: [
     'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
     'https://images.unsplash.com/photo-1523438885200-e635ba54c084?auto=format&fit=crop&w=900&q=80',
@@ -46,60 +95,6 @@ export const IMAGES = {
     'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
   ],
 }
-
-export const STORY_MILESTONES = [
-  {
-    year: '2019',
-    title: 'Lần đầu gặp gỡ',
-    body: 'Một buổi chiều mưa nhẹ, hai đường thẳng vô tình song song rồi chạm nhau.',
-  },
-  {
-    year: '2021',
-    title: 'Chính thức yêu',
-    body: 'Từ những tin nhắn muộn đến những chuyến đi nhỏ — mình chọn nhau mỗi ngày.',
-  },
-  {
-    year: '2024',
-    title: 'Cầu hôn',
-    body: 'Dưới ánh đèn ấm và tiếng cười thân quen, câu “Đồng ý nhé?” được đáp lại bằng nước mắt hạnh phúc.',
-  },
-  {
-    year: '2026',
-    title: 'Thề nguyền trọn đời',
-    body: 'Chúng mình sẽ về chung một nhà — và mong bạn chứng kiến khoảnh khắc ấy.',
-  },
-]
-
-export const EVENT_BLOCKS = [
-  {
-    key: 'ceremony',
-    title: 'Lễ vu quy',
-    lines: ['Trang trọng — ấm áp — sum họp'],
-    detail: `${VENUE.name}`,
-    time: VENUE.ceremonyTime,
-  },
-  {
-    key: 'party',
-    title: 'Tiệc cưới',
-    lines: ['Kính mời quý khách dự tiệc buffet'],
-    detail: `${VENUE.name}`,
-    time: VENUE.receptionTime,
-  },
-  {
-    key: 'groom',
-    title: 'Nhà trai',
-    lines: ['Ông Nguyễn Văn A — Bà Trần Thị B'],
-    detail: 'Trân trọng kính mời',
-    time: '',
-  },
-  {
-    key: 'bride',
-    title: 'Nhà gái',
-    lines: ['Ông Phạm Văn C — Bà Lê Thị D'],
-    detail: 'Trân trọng kính mời',
-    time: '',
-  },
-]
 
 export const DEMO_WISHES = [
   {

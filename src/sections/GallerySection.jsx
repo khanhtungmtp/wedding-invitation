@@ -6,6 +6,7 @@ import { Keyboard, Zoom } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/zoom'
 
+import { Reveal, RevealItem, RevealStagger } from '../components/Reveal'
 import { SectionTitle } from '../components/SectionTitle'
 import { IMAGES } from '../data/wedding'
 import { FiX } from 'react-icons/fi'
@@ -75,31 +76,20 @@ export function GallerySection() {
       <div className="pointer-events-none absolute inset-x-0 top-28 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
 
       <div className="relative mx-auto max-w-5xl">
-        <SectionTitle
-          eyebrow="Gallery"
-          title="Những khoảnh khắc"
-          subtitle="Vuốt trong lightbox để xem tiếp — mượt trên điện thoại."
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="Gallery"
+            title="Những khoảnh khắc"
+            subtitle="Vuốt trong lightbox để xem tiếp — mượt trên điện thoại."
+          />
+        </Reveal>
 
-        <motion.div
-          className="columns-2 gap-3 sm:columns-3 sm:gap-4"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-90px' }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.06 } },
-          }}
-        >
+        <RevealStagger className="columns-2 gap-3 sm:columns-3 sm:gap-4">
           {slides.map((src, idx) => (
-            <motion.button
-              key={src}
+            <RevealItem key={src} className="mb-3 break-inside-avoid sm:mb-4">
+            <button
               type="button"
-              variants={{
-                hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
-              }}
-              className="group mb-3 w-full overflow-hidden rounded-[22px] border border-white/70 bg-white/45 shadow-card backdrop-blur-xl sm:mb-4 break-inside-avoid"
+              className="group w-full overflow-hidden rounded-[22px] border border-white/70 bg-white/45 shadow-card backdrop-blur-xl"
               onClick={() => setActiveIndex(idx)}
             >
               <div className="relative overflow-hidden">
@@ -115,9 +105,10 @@ export function GallerySection() {
                   Tap
                 </span>
               </div>
-            </motion.button>
+            </button>
+            </RevealItem>
           ))}
-        </motion.div>
+        </RevealStagger>
       </div>
 
       {lightbox}

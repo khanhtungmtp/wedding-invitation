@@ -1,97 +1,129 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { FloatingFlowers } from '../components/FloatingFlowers'
-import { COUPLE, IMAGES, WEDDING_DATE_ISO } from '../data/wedding'
 import dayjs from 'dayjs'
 import 'dayjs/locale/vi'
 
+import { FloatingFlowers } from '../components/FloatingFlowers'
+import { COUPLE, IMAGES, WEDDING_DATE_ISO } from '../data/wedding'
+
 dayjs.locale('vi')
+
+const ease = [0.22, 1, 0.36, 1]
+
+function Polaroid({ src, fallback, alt, className, delay, rotate }) {
+  return (
+    <motion.figure
+      className={`absolute w-[min(46vw,200px)] ${className}`}
+      initial={{ opacity: 0, y: 120, rotate: rotate - 8 }}
+      animate={{ opacity: 1, y: 0, rotate }}
+      transition={{ duration: 1.05, delay, ease }}
+    >
+      <motion.div
+        className="overflow-hidden rounded-[18px] border-[6px] border-white bg-white p-2 pb-10 shadow-[0_28px_60px_rgba(58,53,64,0.18)]"
+        whileHover={{ y: -4, rotate: rotate + 1 }}
+        transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="aspect-[4/5] w-full rounded-[12px] object-cover"
+          decoding="async"
+          fetchPriority="high"
+          onError={(e) => {
+            e.currentTarget.src = fallback
+          }}
+        />
+        <figcaption className="absolute bottom-3 left-0 right-0 text-center font-script text-lg text-blush-ink">
+          {alt}
+        </figcaption>
+      </motion.div>
+    </motion.figure>
+  )
+}
 
 export function HeroSection() {
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 520], [0, 110])
-
+  const bgY = useTransform(scrollY, [0, 400], [0, 60])
   const prettyDate = dayjs(WEDDING_DATE_ISO).format('dddd, DD/MM/YYYY')
-
-  const letters = `${COUPLE.bride} & ${COUPLE.groom}`.split('')
 
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-blush-100 pt-[calc(12px+env(safe-area-inset-top))]"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-gradient-to-b from-blush-200/35 via-blush-100 to-white pt-[calc(12px+env(safe-area-inset-top))]"
     >
-      <motion.div style={{ y }} className="absolute inset-0">
-        <img
-          src={IMAGES.hero}
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-          className="h-full w-full object-cover"
-          onError={(e) => {
-            e.currentTarget.src = IMAGES.heroFallback
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-blush-100" />
-        <div className="absolute inset-0 backdrop-blur-[2px]" />
-      </motion.div>
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.9),transparent_55%)]"
+      />
 
-      <FloatingFlowers density={16} />
+      <FloatingFlowers density={14} />
 
-      <div className="relative z-[2] mx-auto flex w-full max-w-xl flex-1 flex-col justify-end px-6 pb-[calc(28px+env(safe-area-inset-bottom))]">
-        <motion.p
-          className="mb-3 text-[11px] font-semibold uppercase tracking-[0.38em] text-white/85"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65 }}
-        >
-          Wedding Invitation
-        </motion.p>
-
-        <div className="mb-5 flex flex-wrap gap-x-[6px]">
-          {letters.map((ch, idx) => (
-            <motion.span
-              key={`${ch}-${idx}`}
-              className="inline-block font-script text-[clamp(2.85rem,11vw,4.25rem)] leading-none text-white drop-shadow-[0_18px_48px_rgba(0,0,0,0.35)]"
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.55,
-                delay: 0.06 + idx * 0.015,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {ch === ' ' ? '\u00a0' : ch}
-            </motion.span>
-          ))}
-        </div>
-
-        <motion.p
-          className="mb-10 max-w-md text-[15px] leading-relaxed text-white/88"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.18 }}
-        >
-          Một lời mời nhỏ — mang theo niềm vui lớn.
-          <span className="mt-2 block text-[13px] font-semibold uppercase tracking-[0.22em] text-white/78">
-            {prettyDate}
-          </span>
-        </motion.p>
-
+      <div className="relative z-[2] mx-auto flex w-full max-w-xl flex-1 flex-col px-6 pb-[calc(32px+env(safe-area-inset-bottom))]">
+        {/* Polaroid stack */}
         <motion.div
-          className="flex flex-col items-center gap-2 text-white/85"
+          className="relative mx-auto mt-6 h-[min(58vw,320px)] w-full max-w-[340px] flex-shrink-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.85, duration: 0.8 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Polaroid
+            src={IMAGES.groom}
+            fallback={IMAGES.groomFallback}
+            alt={COUPLE.groom}
+            className="left-0 top-6 z-[1]"
+            delay={0.15}
+            rotate={-7}
+          />
+          <Polaroid
+            src={IMAGES.bride}
+            fallback={IMAGES.brideFallback}
+            alt={COUPLE.bride}
+            className="right-0 top-0 z-[2]"
+            delay={0.28}
+            rotate={6}
+          />
+        </motion.div>
+
+        <motion.div
+          className="mt-auto text-center"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.55, ease }}
+        >
+          <p className="text-[11px] font-semibold uppercase tracking-[0.38em] text-blush-muted">
+            Wedding Invitation
+          </p>
+
+          <h1 className="mt-4 font-script text-[clamp(3rem,12vw,4.5rem)] leading-none text-blush-ink">
+            {COUPLE.bride}
+            <span className="mx-3 inline-block translate-y-[-4px] text-blush-400">&</span>
+            {COUPLE.groom}
+          </h1>
+
+          <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-blush-muted">
+            Một lời mời nhỏ — mang theo niềm vui lớn.
+          </p>
+
+          <p className="mt-4 text-[13px] font-semibold uppercase tracking-[0.24em] text-blush-ink/80">
+            {prettyDate}
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="mt-10 flex flex-col items-center gap-2 text-blush-muted"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
           aria-hidden
         >
           <span className="text-[10px] font-semibold uppercase tracking-[0.42em]">
             Scroll
           </span>
           <motion.span
-            className="flex h-11 w-[26px] items-start justify-center rounded-full border border-white/55 pt-2"
+            className="flex h-11 w-[26px] items-start justify-center rounded-full border border-blush-300/70 pt-2"
             animate={{ y: [0, 7, 0] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <span className="block h-2 w-2 rounded-full bg-white/85" />
+            <span className="block h-2 w-2 rounded-full bg-blush-400" />
           </motion.span>
         </motion.div>
       </div>

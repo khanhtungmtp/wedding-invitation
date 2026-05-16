@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import { GlassCard } from '../components/GlassCard'
+import { Reveal } from '../components/Reveal'
 import { SectionTitle } from '../components/SectionTitle'
 import { COUPLE, SAVE_THE_DATE_TEXT, WEDDING_DATE_ISO } from '../data/wedding'
 import dayjs from 'dayjs'
@@ -9,24 +9,21 @@ export function SaveDateSection() {
 
   return (
     <section
-      id="save-the-date"
-      className="relative overflow-hidden bg-gradient-to-b from-blush-100 via-white to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
+      id="wedding-date"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-blush-100 to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
     >
       <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-72 max-w-xl rounded-full bg-blush-200/55 blur-3xl" />
 
       <div className="relative mx-auto max-w-xl">
-        <SectionTitle
-          eyebrow="Save the date"
-          title="Hẹn một ngày đẹp trời"
-          subtitle={SAVE_THE_DATE_TEXT}
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="Wedding date"
+            title="Hẹn một ngày đẹp trời"
+            subtitle={SAVE_THE_DATE_TEXT}
+          />
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px' }}
-          transition={{ duration: 0.65 }}
-        >
+        <Reveal delay={0.08}>
           <GlassCard className="px-7 py-10 sm:px-10">
             <div className="flex flex-col gap-8">
               <div className="text-center">
@@ -70,7 +67,7 @@ export function SaveDateSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

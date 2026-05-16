@@ -3,6 +3,7 @@ import toast from 'react-hot-toast'
 import { FiCopy } from 'react-icons/fi'
 
 import qrPlaceholder from '../assets/qr-placeholder.svg'
+import { Reveal } from '../components/Reveal'
 import { GlassCard } from '../components/GlassCard'
 import { SectionTitle } from '../components/SectionTitle'
 import { BANK_INFO } from '../data/wedding'
@@ -44,18 +45,15 @@ export function GiftSection() {
       <div className="pointer-events-none absolute inset-x-0 top-28 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
 
       <div className="relative mx-auto max-w-xl">
-        <SectionTitle
-          eyebrow="Gift"
-          title="Hộp mừng cưới"
-          subtitle="Sự hiện diện của bạn là món quà quý nhất — nếu tiện, bạn có thể gửi lời chúc qua QR demo."
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="Gift"
+            title="Hộp mừng cưới"
+            subtitle="Sự hiện diện của bạn là món quà quý nhất — nếu tiện, bạn có thể gửi lời chúc qua QR demo."
+          />
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px' }}
-          transition={{ duration: 0.55 }}
-        >
+        <Reveal delay={0.06}>
           <GlassCard className="px-7 py-9">
             <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-between">
               <div className="w-full max-w-[260px]">
@@ -106,7 +104,7 @@ export function GiftSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

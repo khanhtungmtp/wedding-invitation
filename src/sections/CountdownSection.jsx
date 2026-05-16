@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Reveal } from '../components/Reveal'
 import { GlassCard } from '../components/GlassCard'
 import { SectionTitle } from '../components/SectionTitle'
 import { useLiveCountdown } from '../hooks/useLiveCountdown'
@@ -42,11 +43,13 @@ export function CountdownSection() {
       <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[120%] -translate-x-1/2 rounded-full bg-blush-200/55 blur-3xl" />
 
       <div className="relative mx-auto max-w-xl">
-        <SectionTitle
-          eyebrow="Countdown"
-          title="Đếm ngược khoảnh khắc"
-          subtitle="Thời gian chậm rãi — nhưng khoảnh khắc “chánh” thì chỉ một lần."
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="Countdown"
+            title="Đếm ngược khoảnh khắc"
+            subtitle="Thời gian chậm rãi — nhưng khoảnh khắc “chạnh” thì chỉ một lần."
+          />
+        </Reveal>
 
         <motion.div
           className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"

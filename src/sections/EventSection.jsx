@@ -1,39 +1,32 @@
-import { motion } from 'framer-motion'
 import { FiExternalLink, FiMapPin } from 'react-icons/fi'
-
-import { GlassCard } from '../components/GlassCard'
-import { SectionTitle } from '../components/SectionTitle'
-import { EVENT_BLOCKS, MAPS_QUERY, VENUE, WEDDING_DATE_ISO } from '../data/wedding'
 import dayjs from 'dayjs'
 
-export function EventSection() {
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    MAPS_QUERY,
-  )}`
+import { GlassCard } from '../components/GlassCard'
+import { Reveal, RevealItem, RevealStagger } from '../components/Reveal'
+import { SectionTitle } from '../components/SectionTitle'
+import { MAPS_QUERY, VENUE, WEDDING_DATE_ISO, WEDDING_EVENTS } from '../data/wedding'
 
+export function EventSection() {
+  const mapsHref = `https://maps.app.goo.gl/73FWLy6ZgmhZL88i9`
   const datePretty = dayjs(WEDDING_DATE_ISO).format('dddd, DD/MM/YYYY')
 
   return (
     <section
       id="event"
-      className="relative bg-white px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
+      className="relative bg-gradient-to-b from-blush-100 via-white to-blush-100 px-6 pb-24 pt-[clamp(72px,14vw,112px)]"
     >
       <div className="pointer-events-none absolute inset-x-0 top-24 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
 
       <div className="relative mx-auto max-w-xl">
-        <SectionTitle
-          eyebrow="Event"
-          title="Thông tin hôn lễ"
-          subtitle="Chúng mình đã chọn một không gian ấm — mong được đón bạn đúng giờ."
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="Event"
+            title="Thông tin tiệc cưới"
+            subtitle="Chúng mình đã chọn một không gian ấm — mong được đón bạn đúng giờ."
+          />
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px' }}
-          transition={{ duration: 0.55 }}
-          className="mb-8"
-        >
+        <Reveal className="mb-8" delay={0.06}>
           <GlassCard className="px-7 py-8">
             <div className="flex items-start gap-3">
               <span className="mt-1 grid h-11 w-11 place-items-center rounded-2xl bg-blush-100 text-blush-ink shadow-sm">
@@ -41,7 +34,7 @@ export function EventSection() {
               </span>
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
-                  Địa điểm (demo)
+                  Địa điểm
                 </p>
                 <p className="mt-3 text-lg font-semibold text-blush-ink">{VENUE.name}</p>
                 <p className="mt-2 text-[15px] leading-relaxed text-blush-muted">
@@ -61,38 +54,24 @@ export function EventSection() {
               <FiExternalLink />
             </a>
           </GlassCard>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid gap-4">
-          {EVENT_BLOCKS.map((b, idx) => (
-            <motion.div
-              key={b.key}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-90px' }}
-              transition={{ duration: 0.55, delay: idx * 0.06 }}
-            >
+        <RevealStagger className="grid gap-4">
+          {WEDDING_EVENTS.map((b) => (
+            <RevealItem key={b.key}>
               <GlassCard className="px-7 py-7">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-blush-muted">
-                      {b.key === 'ceremony'
-                        ? 'Ceremony'
-                        : b.key === 'party'
-                          ? 'Reception'
-                          : b.key === 'groom'
-                            ? 'Family'
-                            : 'Family'}
+                      {b.key === 'ceremony' ? 'Ceremony' : 'Reception'}
                     </p>
                     <p className="mt-3 font-script text-[clamp(2.4rem,9vw,3.4rem)] leading-none text-blush-ink">
                       {b.title}
                     </p>
                   </div>
-                  {b.time ? (
-                    <span className="rounded-full bg-blush-100 px-4 py-2 text-xs font-bold text-blush-ink shadow-sm">
-                      {b.time}
-                    </span>
-                  ) : null}
+                  <span className="rounded-full bg-blush-100 px-4 py-2 text-xs font-bold text-blush-ink shadow-sm">
+                    {b.time}
+                  </span>
                 </div>
 
                 <div className="mt-5 space-y-2">
@@ -104,9 +83,9 @@ export function EventSection() {
                   <p className="text-sm font-semibold text-blush-ink">{b.detail}</p>
                 </div>
               </GlassCard>
-            </motion.div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   )

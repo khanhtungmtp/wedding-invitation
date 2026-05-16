@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 
+import { Reveal } from '../components/Reveal'
 import { GlassCard } from '../components/GlassCard'
 import { SectionTitle } from '../components/SectionTitle'
 import { submitRsvp } from '../services/rsvpApi'
@@ -102,18 +103,15 @@ export function RSVPSection() {
       <div className="pointer-events-none absolute inset-x-0 top-28 mx-auto h-72 max-w-xl rounded-full bg-blush-200/45 blur-3xl" />
 
       <div className="relative mx-auto max-w-xl">
-        <SectionTitle
-          eyebrow="RSVP"
-          title="Xác nhận tham dự"
-          subtitle="Giúp hai đứa chủ động số lượng khách — cảm ơn bạn rất nhiều."
-        />
+        <Reveal>
+          <SectionTitle
+            eyebrow="RSVP"
+            title="Xác nhận tham dự"
+            subtitle="Giúp hai đứa chủ động số lượng khách — cảm ơn bạn rất nhiều."
+          />
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px' }}
-          transition={{ duration: 0.55 }}
-        >
+        <Reveal delay={0.06}>
           <GlassCard hover={false} className="px-7 py-9">
             <form className="space-y-6" onSubmit={onSubmit} noValidate>
               <div>
@@ -196,7 +194,7 @@ export function RSVPSection() {
                   value={form.guestCount}
                   onChange={(e) => setField('guestCount', e.target.value)}
                 >
-                  {Array.from({ length: 30 }, (_, i) => i + 1).map((n) => (
+                  {Array.from({ length: 2 }, (_, i) => i + 1).map((n) => (
                     <option key={n} value={String(n)}>
                       {n} người
                     </option>
@@ -232,7 +230,7 @@ export function RSVPSection() {
                 whileTap={{ scale: submitting ? 1 : 0.985 }}
               >
                 <span className={submitting ? 'opacity-45' : ''}>
-                  {submitting ? 'Đang gửi…' : 'Gửi RSVP'}
+                  {submitting ? 'Đang gửi…' : 'Gửi đi'}
                 </span>
                 {submitting ? (
                   <motion.span
@@ -250,7 +248,7 @@ export function RSVPSection() {
               </p>
             </form>
           </GlassCard>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )
