@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280" role="img" aria-label="QR demo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f6dfe3"/>
+    </linearGradient>
+  </defs>
+  <rect width="280" height="280" rx="36" fill="url(#g)"/>
+  <rect x="24" y="24" width="72" height="72" rx="14" fill="#3a3540"/>
+  <rect x="40" y="40" width="40" height="40" rx="8" fill="#f8f4f4"/>
+  <rect x="184" y="24" width="72" height="72" rx="14" fill="#3a3540"/>
+  <rect x="200" y="40" width="40" height="40" rx="8" fill="#f8f4f4"/>
+  <rect x="24" y="184" width="72" height="72" rx="14" fill="#3a3540"/>
+  <rect x="40" y="200" width="40" height="40" rx="8" fill="#f8f4f4"/>
+  <g fill="#3a3540">
+    <rect x="112" y="24" width="16" height="16" rx="3"/>
+    <rect x="136" y="24" width="16" height="16" rx="3"/>
+    <rect x="112" y="48" width="16" height="16" rx="3"/>
+    <rect x="152" y="48" width="16" height="16" rx="3"/>
+    <rect x="112" y="112" width="16" height="16" rx="3"/>
+    <rect x="136" y="112" width="16" height="16" rx="3"/>
+    <rect x="160" y="112" width="16" height="16" rx="3"/>
+    <rect x="184" y="112" width="16" height="16" rx="3"/>
+    <rect x="208" y="112" width="16" height="16" rx="3"/>
+    <rect x="232" y="112" width="16" height="16" rx="3"/>
+    <rect x="112" y="136" width="16" height="16" rx="3"/>
+    <rect x="160" y="136" width="16" height="16" rx="3"/>
+    <rect x="208" y="136" width="16" height="16" rx="3"/>
+    <rect x="232" y="136" width="16" height="16" rx="3"/>
+    <rect x="112" y="160" width="16" height="16" rx="3"/>
+    <rect x="136" y="160" width="16" height="16" rx="3"/>
+    <rect x="184" y="160" width="16" height="16" rx="3"/>
+    <rect x="232" y="160" width="16" height="16" rx="3"/>
+    <rect x="112" y="184" width="16" height="16" rx="3"/>
+    <rect x="160" y="184" width="16" height="16" rx="3"/>
+    <rect x="208" y="184" width="16" height="16" rx="3"/>
+    <rect x="136" y="208" width="16" height="16" rx="3"/>
+    <rect x="184" y="208" width="16" height="16" rx="3"/>
+    <rect x="232" y="208" width="16" height="16" rx="3"/>
+    <rect x="112" y="232" width="16" height="16" rx="3"/>
+    <rect x="160" y="232" width="16" height="16" rx="3"/>
+    <rect x="208" y="232" width="16" height="16" rx="3"/>
+  </g>
+  <text x="140" y="148" text-anchor="middle" fill="#d9b8c4" font-family="DM Sans, system-ui, sans-serif" font-size="13" font-weight="600">
+    DEMO QR
+  </text>
+</svg>
