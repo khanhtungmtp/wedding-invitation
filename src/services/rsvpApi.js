@@ -1,5 +1,4 @@
 import { googleScriptUrl } from '../data/config'
-import { DEMO_WISHES } from '../data/wedding'
 
 async function readJsonSafe(response) {
   const text = await response.text()
@@ -39,10 +38,6 @@ export async function submitRsvp(payload) {
 }
 
 export async function fetchWishes() {
-  if (!googleScriptUrl) {
-    await new Promise((r) => window.setTimeout(r, 450))
-    return DEMO_WISHES
-  }
 
   const url = new URL(googleScriptUrl)
   url.searchParams.set('action', 'wishes')
@@ -59,5 +54,4 @@ export async function fetchWishes() {
 
   if (Array.isArray(data?.wishes)) return data.wishes
   if (Array.isArray(data)) return data
-  return DEMO_WISHES
 }
