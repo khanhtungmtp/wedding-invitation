@@ -4,12 +4,10 @@ import dayjs from 'dayjs'
 import { GlassCard } from '../components/GlassCard'
 import { Reveal, RevealItem, RevealStagger } from '../components/Reveal'
 import { SectionTitle } from '../components/SectionTitle'
-import { MAPS_QUERY, VENUE, WEDDING_DATE_ISO, WEDDING_EVENTS } from '../data/wedding'
+import { VENUE, WEDDING_DATE_ISO, WEDDING_EVENTS } from '../data/wedding'
 
 export function EventSection() {
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    MAPS_QUERY,
-  )}`
+  const mapsHref = `https://maps.app.goo.gl/4UrUqNiyXGqC3oF66`;
   const datePretty = dayjs(WEDDING_DATE_ISO).format('dddd, DD/MM/YYYY')
 
   return (

@@ -60,19 +60,16 @@ export function GiftSection() {
                 <div className="overflow-hidden rounded-[24px] border border-white/75 bg-white/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-xl sm:rounded-[30px] sm:p-5">
                   <img
                     src={qrPlaceholder}
-                    alt="QR quà mừng (demo)"
+                    alt="QR quà mừng"
                     className="mx-auto w-full max-w-full rounded-[18px] sm:rounded-[22px]"
                     loading="lazy"
                   />
                 </div>
-                <p className="mt-3 text-center text-[10px] font-semibold uppercase tracking-[0.22em] text-blush-muted sm:mt-4 sm:text-xs sm:tracking-[0.28em]">
-                  QR demo — thay bằng VietQR của bạn
-                </p>
               </div>
 
               <div className="w-full min-w-0 flex-1">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-blush-muted sm:text-[11px] sm:tracking-[0.34em]">
-                  Thông tin chuyển khoản (demo)
+                  Thông tin chuyển khoản
                 </p>
 
                 <div className="mt-4 space-y-3 rounded-[22px] border border-white/70 bg-white/65 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:mt-5 sm:space-y-4 sm:rounded-[26px] sm:p-6">

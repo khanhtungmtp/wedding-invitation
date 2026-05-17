@@ -16,17 +16,25 @@ export async function submitRsvp(payload) {
     return { ok: true, demo: true }
   }
 
+  const formData = new URLSearchParams()
+  formData.append("data", JSON.stringify(payload))
+
+  console.log("SEND TO GAS:", payload)
+
   const response = await fetch(googleScriptUrl, {
     method: 'POST',
+    body: formData, 
     redirect: 'follow',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify(payload),
   })
 
   const data = await readJsonSafe(response)
+
+  console.log("RESPONSE GAS:", data)
+
   if (!response.ok) {
     throw new Error(data?.error || 'RSVP submission failed')
   }
+
   return data
 }
 
@@ -41,10 +49,10 @@ export async function fetchWishes() {
 
   const response = await fetch(url.toString(), {
     method: 'GET',
-    redirect: 'follow',
   })
 
   const data = await readJsonSafe(response)
+
   if (!response.ok) {
     throw new Error(data?.error || 'Failed to load wishes')
   }

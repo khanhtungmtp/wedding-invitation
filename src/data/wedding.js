@@ -7,8 +7,8 @@ export const COUPLE = {
   groom: 'Hữu Quốc',
 }
 
-/** Wedding day start (local) — 23/05/2026 */
-export const WEDDING_DATE_ISO = '2026-05-23T09:30:00'
+/** Wedding day start (local) — 23/05/2027 */
+export const WEDDING_DATE_ISO = '2027-05-23T09:30:00'
 
 export const SAVE_THE_DATE_TEXT =
   'Chúng mình hân hạnh mời bạn đến chung vui trong ngày trọng đại của hai đứa.'
@@ -62,7 +62,7 @@ export const WEDDING_EVENTS = [
   {
     key: 'reception',
     title: 'Tiệc cưới',
-    lines: ['Kính mời quý khách dự tiệc buffet'],
+    lines: ['Kính mời quý khách dự tiệc cùng gia đình chúng tôi'],
     detail: VENUE.name,
     time: VENUE.receptionTime,
   },
@@ -78,44 +78,20 @@ export const IMAGES = {
   groom:
     'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85',
   bride:
-    'https://images.unsplash.com/photo-1523438885200-e635ba54c084?auto=format&fit=crop&w=900&q=85',
+    'https://cdn.pixabay.com/photo/2017/06/07/11/58/color-in-the-sea-2380142_1280.jpg',
   groomFallback:
     'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=85',
   brideFallback:
     'https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=900&q=85',
   gallery: [
     'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1523438885200-e635ba54c084?auto=format&fit=crop&w=900&q=80',
+    'https://i.pinimg.com/736x/84/a0/16/84a0168942aeea0d3d93307c403b9b3c.jpg',
     'https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1460978812857-470ed1c77af8?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1469379570809-613eab77afc7?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1520854221050-0f463caf18a4?auto=format&fit=crop&w=900&q=80',
+    'https://anhquanweddingstudio.com/wp-content/uploads/2024/03/059A2508.jpg',
+    'https://i.pinimg.com/originals/6b/23/37/6b233755ef3b0b65d41a558f16f0cb06.jpg',
+    'https://i.pinimg.com/736x/a1/a8/7b/a1a87b256cd9ea472e27403471d08d6a.jpg',
     'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=80',
     'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80',
     'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80',
   ],
 }
-
-export const DEMO_WISHES = [
-  {
-    id: 'w1',
-    name: 'Lan Phương',
-    message:
-      'Chúc hai em một hành trình thật êm đềm — giận nhau ít thôi, yêu nhau nhiều vào!',
-    createdAt: '2026-05-01T10:20:00',
-  },
-  {
-    id: 'w2',
-    name: 'Tuấn Kiệt',
-    message:
-      'Happy wedding! Mong buổi tiệc ấm áp và đầy tiếng cười — hẹn gặp trên dance floor nhé!',
-    createdAt: '2026-05-03T14:05:00',
-  },
-  {
-    id: 'w3',
-    name: 'Mẹ của Anh',
-    message:
-      'Con trai và con dâu của mẹ — luôn nắm tay nhau qua sóng gió nhỏ trong đời nhé.',
-    createdAt: '2026-05-06T09:15:00',
-  },
-]
